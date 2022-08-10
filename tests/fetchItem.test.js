@@ -15,11 +15,10 @@ describe('2 - Teste a função fetchItem', () => {
     expect(fetch).toHaveBeenCalledWith('https://api.mercadolibre.com/items/MLB1615760527');
   });
   it('Teste se o retorno da função fetchItem com o argumento do item "MLB1615760527" é uma estrutura de dados igual ao objeto item', async () => {
-    await fetchItem('MLB1615760527');
-    expect(fetch).toEqual(item);
+    expect(await fetchItem('MLB1615760527')).toEqual(item);
   });
-  it('', async () => {
-    const result = await fetchProducts();
+  it('Teste se, ao chamar a função fetchItem sem argumento, retorna um erro com a mensagem', async () => {
+    const result = await fetchItem();
     expect(result).toEqual(new Error('You must provide an url'));
   });
 });
