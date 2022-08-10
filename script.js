@@ -24,32 +24,10 @@ const createProductItemElement = ({ sku, name, image }) => {
   return section;
 };
 
-// const createProduct = async () => {
-//   const data = await fetchProducts('computador');
-//   const products = data.results.map((item) => ({
-//     sku: item.id,
-//     name: item.title,
-//     image: item.thumbnail,
-//   }));
-//   // console.log('1', products);
-//   products.forEach((element) => {
-//     const { sku } = element;
-//     const items = document.querySelector('.items');
-//     const func = createProductItemElement(element);
-//     items.appendChild(func);
-//     // console.log('2', items);
-    
-//     func.addEventListener('click', (event) => {
-//       cartItems(sku);
-//     });
-//   });
-// };
-// createProduct();
-
 const getSkuFromProductItem = (item) => item.querySelector('span.item__sku').innerText;
 
 const cartItemClickListener = (event) => {
-  // coloque seu código aqui
+  event.target.remove();
 };
 
 const createCartItemElement = ({ sku, name, salePrice }) => {
