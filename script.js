@@ -52,27 +52,27 @@ const cartItems = async (ID) => {
   saveCartItems(cartItemElement.innerHTML);
 };
 
-const createProduct = async () => {
-  const data = await fetchProducts('computador');
-  remove();
-  const products = data.results.map((item) => ({
-    sku: item.id,
-    name: item.title,
-    image: item.thumbnail,
-  }));
-  // console.log('1', products);
-  products.forEach((element) => {
-    const { sku } = element;
-    const items = document.querySelector('.items');
-    const func = createProductItemElement(element);
-    items.appendChild(func);
-    // console.log('2', items);
+// const createProduct = async () => {
+//   const data = await fetchProducts('computador');
+//   remove();
+//   const products = data.results.map((item) => ({
+//     sku: item.id,
+//     name: item.title,
+//     image: item.thumbnail,
+//   }));
+//   // console.log('1', products);
+//   products.forEach((element) => {
+//     const { sku } = element;
+//     const items = document.querySelector('.items');
+//     const func = createProductItemElement(element);
+//     items.appendChild(func);
+//     // console.log('2', items);
 
-    func.addEventListener('click', (event) => {
-      cartItems(sku);
-    });
-  });
-};
+//     func.addEventListener('click', (event) => {
+//       cartItems(sku);
+//     });
+//   });
+// };
 
 const saveList = () => {
   cartItem.innerHTML = getSavedCartItems();
@@ -94,7 +94,27 @@ const loading = () => sectionItem.appendChild(createCustomElement('p', 'loading'
 
 const remove = () => {
   const loadingClass = document.querySelector('.loading');
- loadingClass.remove();
+  loadingClass.remove();
+};
+
+const createProduct = async () => {
+  const data = await fetchProducts('computador');
+  remove();
+  const products = data.results.map((item) => ({
+    sku: item.id,
+    name: item.title,
+    image: item.thumbnail,
+  }));
+  products.forEach((element) => {
+    const { sku } = element;
+    const items = document.querySelector('.items');
+    const func = createProductItemElement(element);
+    items.appendChild(func);
+
+    func.addEventListener('click', (event) => {
+      cartItems(sku);
+    });
+  });
 };
 
 window.onload = () => {
