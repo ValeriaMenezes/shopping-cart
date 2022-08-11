@@ -1,4 +1,5 @@
 const cartItem = document.querySelector('.cart__items');
+const btnEmptyCart = document.querySelector('.empty-cart');
 
 const createProductImageElement = (imageSource) => {
   const img = document.createElement('img');
@@ -81,7 +82,14 @@ const saveList = () => {
   console.log(item);
 };
 
+const btn = () => {
+  btnEmptyCart.addEventListener('click', () => {
+    cartItem.innerHTML = '';
+  });
+};
+
 window.onload = () => {
   createProduct();
   saveList();
+  btn();
 };
